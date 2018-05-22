@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计时</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        
+        body {
+            -webkit-font-smoothing: antialiased;
+            font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+            font-size: 85%;
+            margin: 0;
+        }
+        
+        .wrap {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .bg {
+            height: 100%;
+            width: 100%;
+            background: url('bg.jpg') center center no-repeat;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            -ms-background-size: cover;
+            background-size: cover;
+            -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -o-filter: blur(5px);
+            -ms-filter: blur(5px);
+            filter: blur(5px);
+        }
+        
+        h2 {
+            font-size: 220%;
+            font-weight: 400;
+        }
+        
+        .container {
+            position: absolute;
+            width: 100%;
+            top: 40%;
+            text-align: center;
+        }
+        
+        .timer {
+            font-size: 180%;
+            line-height: 1.5;
+            margin: 1em 0;
+        }
+        
+        .timer b {
+            color: rgb(228, 92, 74);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="bg"></div>
+        <div class="container">
+            <h2>Chiwent,你的征程已经开始了</h2>
+            <div class="timer">
+                <b id="days"></b> Days <b id="hours"></b> Hours <b id="minutes"></b> Minutes <b id="seconds"></b> Seconds
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function timer() {
+            var start = new Date(2018, 04, 21); // 2018.05.21
+            var t = new Date() - start;
+            var h = ~~(t / 1000 / 60 / 60 % 24);
+            if (h < 10) {
+                h = "0" + h;
+            }
+            var m = ~~(t / 1000 / 60 % 60);
+            if (m < 10) {
+                m = "0" + m;
+            }
+            var s = ~~(t / 1000 % 60);
+            if (s < 10) {
+                s = "0" + s;
+            }
+            document.getElementById('days').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
+            document.getElementById('hours').innerHTML = h;
+            document.getElementById('minutes').innerHTML = m;
+            document.getElementById('seconds').innerHTML = s;
+        }
+        // timer();
+        setInterval(timer, 1000);
+    </script>
+</body>
+
+</html>
